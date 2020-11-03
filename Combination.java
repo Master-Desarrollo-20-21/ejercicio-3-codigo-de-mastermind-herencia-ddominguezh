@@ -22,7 +22,7 @@ public abstract class Combination {
 		if(!isValidColors()) {
 			return false;
 		}
-		if(!haveRepeatingColors()) {
+		if(haveRepeatingColors()) {
 			return false;
 		}
 		return true;
@@ -50,11 +50,11 @@ public abstract class Combination {
     				Color nextColor = this.colors[j];
     				if(color.equals(nextColor)) {
     					console.write("Wrong proposed, can not repeat color.");
-    					return false;
+    					return true;
     				}
     			}
     		}
-    		return true;
+    		return false;
     }
     
 }
