@@ -1,0 +1,88 @@
+@startuml
+
+class MasterMind{
+    - Game: game
+    {static} main()
+    + play()
+    - isResume()
+}
+
+class Game {
+    - Attempt[] : attempts
+    - SecretCombination : secret
+    - numAttempts : int
+    + play()
+    - reset()
+    - printAttempts()
+    - haveMoreAttempts()
+    - finish()
+    - lastAttempt()
+}
+
+class Attempt {
+    - Spike[] : spikes
+    - ProposedCombination : proposed
+    + play()
+    + result(secret)
+    + print()
+    + isWinner()
+    - numSpikes(spike)
+}
+
+abstract Combination {
+    - Color[] colors
+    {abstract} generate()
+    {abstract} toString()
+    + isValid()
+    - isValidLength()
+    - isValidColors()
+    - haveRepeatingColors()
+}
+
+class SecretCombination {
+    + Spike[] compare(Combination combination)
+    - indexOf(color, combination)
+}
+
+class ProposedCombination {
+
+}
+
+class Console{
+    + write(value)
+    + readString(value)
+}
+
+enum Color{
+    RED('r'),
+    BLUE('b'),
+    GREEN('g'),
+    YELLOW('y'),
+    PINK('p'),
+    MAGENTE('m'),
+    ORANGE('o'),
+    SILVER('s');
+    - char: shortName
+    {static} valueOf(char color)
+    {static} shortNames()
+    + shortName()
+}
+
+enum Spike {
+    WHITE,
+    BLACK,
+}
+
+MasterMind *--> Game
+MasterMind ..> Console
+Game *--> SecretCombination
+Game *--> "1, 10" Attempt
+Game ..> Console
+Attempt *--> ProposedCombination
+Attempt o--> "0, 4" Spike
+Attempt ..> Console
+Combination <|-- SecretCombination
+Combination <|-- ProposedCombination
+Combination o--> "4" Color
+
+@enduml
