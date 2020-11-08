@@ -28,17 +28,17 @@ public class SecretCombination extends Combination{
 		return result;
 	}
 
-	public Spike[] compare(ProposedCombination combination) {
-		Spike[] spikes = new Spike[this.colors.length];
+	public Pig[] compare(ProposedCombination combination) {
+		Pig[] pigs = new Pig[this.colors.length];
 		for(int i = 0 ; i < this.colors.length ; i++ ) {
 			int index = indexOf(this.colors[i], combination);
 			if(index == i) {
-				spikes[i] = Spike.BLACK;
+				pigs[i] = Pig.BLACK;
 			}else if(index > -1) {
-				spikes[i] = Spike.WHITE;
+				pigs[i] = Pig.WHITE;
 			}
 		}
-		return spikes;
+		return pigs;
 	}
 
 	public int indexOf(Color color, Combination combination) {
