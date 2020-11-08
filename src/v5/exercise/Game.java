@@ -12,16 +12,13 @@ public class Game {
 	public Game() {
 		this.secret = new SecretCombination();
 		this.attempts = new Attempt[MAX_ATTEMTPS];
-		for(int i = 0 ; i < MAX_ATTEMTPS ; i++ ) {
-			this.attempts[i] = new Attempt();
-		}
 	}
 	
 	public void play() {
 		reset();
 		do {
 			Console.getInstance().write("Attempt " + this.numAttempts +", Colors: " + Color.shortNames());
-			attempts[this.numAttempts].play().result(this.secret);
+			attempts[this.numAttempts] = new Attempt().play().result(this.secret);
 			this.numAttempts++;
 			printAttempts();
 		}while(haveMoreAttempts());
