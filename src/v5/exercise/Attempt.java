@@ -5,7 +5,7 @@ import v5.exercise.enums.Spike;
 public class Attempt {
 
 	private ProposedCombination proposed;
-	private Spike[] spikes;
+	private Pig[] pigs;
 	
 	public Attempt() {
 		this.proposed = new ProposedCombination();
@@ -17,18 +17,18 @@ public class Attempt {
 	}
 
 	public Attempt result(SecretCombination secret) {
-		this.spikes = secret.compare(this.proposed);
+		this.pigs = secret.compare(this.proposed);
 		return this;
 	}
 	
 	public void print() {
-		Console.getInstance().write(this.proposed.toString() + " ---> " + numSpikes(Spike.BLACK)  + " blacks - " + numSpikes(Spike.WHITE) + " whites.");
+		Console.getInstance().write(this.proposed.toString() + " ---> " + numPigs(Pig.BLACK)  + " blacks - " + numPigs(Pig.WHITE) + " whites.");
 	}
 
-	private int numSpikes(Spike foundSpike) {
+	private int numPigs(Pig foundPig) {
 		int count = 0;
-		for(Spike spike : this.spikes) {
-			if(foundSpike.equals(spike)) {
+		for(Pig pig : this.pigs) {
+			if(foundPig.equals(pig)) {
 				count++;
 			}
 		}
@@ -36,7 +36,7 @@ public class Attempt {
 	}
 
 	public boolean isWinner() {
-		return numSpikes(Spike.BLACK) == 4;
+		return numPigs(Pig.BLACK) == 4;
 	}
 
 }
