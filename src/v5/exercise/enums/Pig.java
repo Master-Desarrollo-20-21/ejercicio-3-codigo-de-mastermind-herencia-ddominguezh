@@ -1,6 +1,6 @@
 package v5.exercise.enums;
 
-public enum Spike {
+public enum Pig {
 	WHITE,
 	BLACK,
 }
