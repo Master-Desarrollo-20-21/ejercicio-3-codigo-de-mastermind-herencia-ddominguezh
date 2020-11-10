@@ -29,9 +29,11 @@ public abstract class Combination {
 		}
 		return true;
 	}
+	
 	private boolean isValidLength() {
 		return this.colors.length == COLORS_LENGTH;
 	}
+	
 	private boolean isValidColors() {
 		for(Color color : this.colors) {
 			if(color == null) {
@@ -40,7 +42,8 @@ public abstract class Combination {
 		}
 		return true;
 	}
-    private boolean haveRepeatingColors() {
+	
+    	private boolean haveRepeatingColors() {
     		for(int i = 0 ; i < this.colors.length ; i++) {
     			Color color = this.colors[i];
     			for( int j = i+1; j < this.colors.length ; j++) {
@@ -50,6 +53,6 @@ public abstract class Combination {
     			}
     		}
     		return false;
-    }
+    	}
     
 }
