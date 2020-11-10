@@ -36,7 +36,7 @@ public class Attempt {
 	}
 
 	public boolean isWinner() {
-		return numPigs(Pig.BLACK) == 4;
+		return numPigs(Pig.BLACK) == this.pigs.length;
 	}
 
 }
